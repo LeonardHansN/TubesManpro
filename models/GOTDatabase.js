@@ -20,7 +20,24 @@ export default class GOTDatabase {
         });
     };
 
-
+    getSourceCall = (conn, bookNum, src) => {
+        const sqlquery = `
+        SELECT target,COUNT(target) AS 'count' FROM interactions
+        WHERE book =?
+        AND source like "%?%"
+        GROUP by target
+        ORDER BY count desc;
+        `
+        return new Promise((resolve, reject) => {
+            conn.query(sqlquery, [bookNum, src], (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+    }
     // Method-method untuk mengambil data dari database
     getTop10Interactions = (conn, bookNum) => {
         const sqlquery = `
