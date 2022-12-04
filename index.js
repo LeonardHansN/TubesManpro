@@ -45,7 +45,17 @@ app.listen(PORT, () => {
 // Router
 
 app.get('/', (req, res) => {
-    res.sendFile('MainMenu.html', {root: _root })
+    res.sendFile('MainMenu.html', { root: _root })
+});
+app.get('/api/search', (req, res) => {
+    const bookNum = req.query.bookNum;
+    const chara_src = req.query.source;
+    if (!isNaN(req.query.bookNum) && !isNaN(req.query.source)) {
+        const conn = await db.connect();
+        let result = await db.getSourceCall(conn, bookNum, source);
+        conn.release();
+        res.json(result);
+    }
 });
 
 app.get('/top10char', async (req, res) => {
@@ -70,6 +80,6 @@ app.get('/top10char', async (req, res) => {
 
         res.json(data);
     } else {
-        res.sendFile('top10char.html', {root: _root })
+        res.sendFile('top10char.html', { root: _root })
     }
 })
