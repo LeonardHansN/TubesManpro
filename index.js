@@ -1,7 +1,7 @@
 import GOTDatabase from "./models/GOTDatabase.js";
 import express from "express";
 import mysql from "mysql2";
-import path from "path";
+import path, { resolve } from "path";
 
 // Constants
 const _root = 'public';
@@ -32,7 +32,8 @@ const db = new GOTDatabase(_dbconfig);
 // Menggunakan folder "public" untuk menyimpan file yang dapat diakses umum.
 app.use(express.static(path.resolve(_root)));
 // ============================================================================
-
+// Menggunakan view engine ejs
+app.set('view engine', 'ejs');
 
 // ============================================================================
 // Listen ke port 8080. Akses dengan url http://localhost:8080/
@@ -81,5 +82,32 @@ app.get('/top10char', async (req, res) => {
         res.json(data);
     } else {
         res.sendFile('top10char.html', { root: _root })
+    }
+});
+
+// const getBySource = (conn, source) => {
+//     return new Promise((resolve, reject) => {
+//         const sql = 'SELECT * FROM interaction WHERE source LIKE?';
+//         conn.query(sql, source, (err, result) => {
+//             if(err){
+//                 reject(err);
+//             }else{
+//                 resolve(result);
+//             }
+//         });
+//     });
+// };
+
+app.get('/search', async (req,res) => {
+    const conn = await db.connect();
+    res.render('search');
+
+    if(req.body.source !== undefined && req.body.book){
+        const numBook = req.body.book;
+        const source = req.body.source;
+        const data = await getSourceCall(conn, numBook, source);
+        res.render('search', {
+            results: data
+        });
     }
 })
