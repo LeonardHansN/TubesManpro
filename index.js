@@ -1,7 +1,8 @@
 import GOTDatabase from "./models/GOTDatabase.js";
+import bodyparser from "body-parser";
 import express from "express";
 import mysql from "mysql2";
-import path, { resolve } from "path";
+import path from "path";
 
 // Constants
 const _root = 'public';
@@ -15,8 +16,9 @@ const _dbconfig = {
 
 // ============================================================================
 // Init
-
 const app = express();
+
+app.use(bodyparser.urlencoded({ extended: true }));
 
 // Connect SQL
 const sqlConnectConfig = {
@@ -34,6 +36,9 @@ app.use(express.static(path.resolve(_root)));
 // ============================================================================
 // Menggunakan view engine ejs
 app.set('view engine', 'ejs');
+app.set("views", [
+    "./views"
+]);
 
 // ============================================================================
 // Listen ke port 8080. Akses dengan url http://localhost:8080/
@@ -48,7 +53,8 @@ app.listen(PORT, () => {
 app.get('/', (req, res) => {
     res.sendFile('MainMenu.html', { root: _root })
 });
-app.get('/api/search', (req, res) => {
+
+app.get('/api/search', async (req, res) => {
     const bookNum = req.query.bookNum;
     const chara_src = req.query.source;
     if (!isNaN(req.query.bookNum) && !isNaN(req.query.source)) {
