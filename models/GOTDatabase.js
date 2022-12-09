@@ -20,16 +20,20 @@ export default class GOTDatabase {
         });
     };
 
-    getSourceCall = (conn, bookNum, src) => {
+    getSourceCall = (conn, bookNum, src, showLimit = 0, page = 0) => {
         const sqlquery = `
         SELECT target,COUNT(target) AS 'count' FROM interactions
         WHERE book =?
-        AND source like "%?%"
+        AND source like ?
         GROUP by target
         ORDER BY count desc;
         `
+        let data_query = [bookNum, `%${src}%`]
+        if (showLimit > 0 && page > 0) {
+
+        }
         return new Promise((resolve, reject) => {
-            conn.query(sqlquery, [bookNum, src], (err, result) => {
+            conn.query(sqlquery, data_query, (err, result) => {
                 if (err) {
                     reject(err);
                 } else {

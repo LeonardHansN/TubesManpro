@@ -5,6 +5,7 @@ import mysql from "mysql2";
 import path from "path";
 
 // Constants
+const showLimit = 10;
 const _root = 'public';
 const PORT = 8080;
 const _dbconfig = {
@@ -54,16 +55,6 @@ app.get('/', (req, res) => {
     res.sendFile('MainMenu.html', { root: _root })
 });
 
-app.get('/api/search', async (req, res) => {
-    const bookNum = req.query.bookNum;
-    const chara_src = req.query.source;
-    if (!isNaN(req.query.bookNum) && !isNaN(req.query.source)) {
-        const conn = await db.connect();
-        let result = await db.getSourceCall(conn, bookNum, source);
-        conn.release();
-        res.json(result);
-    }
-});
 
 app.get('/top10char', async (req, res) => {
     const bookNum = req.query.bookNum;
@@ -91,29 +82,25 @@ app.get('/top10char', async (req, res) => {
     }
 });
 
-// const getBySource = (conn, source) => {
-//     return new Promise((resolve, reject) => {
-//         const sql = 'SELECT * FROM interaction WHERE source LIKE?';
-//         conn.query(sql, source, (err, result) => {
-//             if(err){
-//                 reject(err);
-//             }else{
-//                 resolve(result);
-//             }
-//         });
-//     });
-// };
-
-app.get('/search', async (req,res) => {
+app.get('/search', (req, res) => {
+    res.redirect('/search/1');
+})
+app.get('/search/:page', async (req, res) => {
     const conn = await db.connect();
-    res.render('search');
+    let numBook = 1;
+    let source = "";
+    let page = req.params.page;
 
-    if(req.body.source !== undefined && req.body.book){
-        const numBook = req.body.book;
-        const source = req.body.source;
-        const data = await getSourceCall(conn, numBook, source);
-        res.render('search', {
-            results: data
-        });
+    // res.render('search');
+
+    if (req.body.source !== undefined && req.body.book) {
+        numBook = req.body.book;
+        source = req.body.source;
     }
+    let results_all = await db.getSourceCall(conn, numBook, source);
+    let totalPage = results_all.length / showLimit;
+    let results = await db.getSourceCall(conn, numBook, source, showLimit, page);
+    console.log(req.body);
+    let data = { source, numBook, results, totalPage };
+    res.render('search', data);
 })
