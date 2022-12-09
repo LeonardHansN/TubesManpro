@@ -78,7 +78,8 @@ app.get('/top10char', async (req, res) => {
 
         res.json(data);
     } else {
-        res.sendFile('top10char.html', { root: _root })
+        // res.sendFile('top10char.html', { root: _root })
+        res.render('top10char');
     }
 });
 
