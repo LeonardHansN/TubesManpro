@@ -1,6 +1,7 @@
 const canvasChartTop10 = document.getElementById('canvas-chart-top10');
 const buttonShow = document.getElementById('button-show');
 const selectBook = document.getElementById('select-book');
+const spanBookNum = document.getElementById('span-booknum');
 
 const chartConfig = {
     type: 'bar',
@@ -71,7 +72,8 @@ const generateChartTop10 = (data, bookNum) => {
     chartConfig['data']['labels'] = data.x;
     datasets.push({ data: data.y });
     chartConfig['data']['datasets'][0]['data'] = data.y;
-    chartConfig['options']['plugins']['title']['text'] = `Top 10 Jumlah Interaksi Karakter dalam Buku ${bookNum}`
+    // chartConfig['options']['plugins']['title']['text'] = `Top 10 Jumlah Interaksi Karakter dalam Buku ${bookNum}`
+    spanBookNum.innerText = bookNum;
 
     top10Chart = new Chart(canvasChartTop10.getContext("2d"), chartConfig);
 }
@@ -94,3 +96,7 @@ buttonShow.addEventListener("click", () => {
     let bookNum = selectBook.value;
     makeChartTop10(bookNum);
 });
+
+(()=>{
+    makeChartTop10(1);
+})();
