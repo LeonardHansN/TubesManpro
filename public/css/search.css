@@ -1,0 +1,14 @@
+.select_book {
+    display: inline-block;
+    width: 50vw;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.styled-table td,
+.styled-table th {
+    border: 1px solid black;
+}
