@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10</title>
+    <link rel="stylesheet" href="/css/top10char.css">
+    <link rel="stylesheet" href="/css/navigationheader.css">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/top10char.js" defer></script>
+</head>
+
+<body>
+    <%- include('./navigationheader.ejs') %>
+        <main>
+
+            <div id="container-overview">
+                <div id="subcontainer-overview">
+                    <img src="/images/interaction.jpg" alt="" id="img-overview">
+                    <div id="container-expl">
+                        <h1>TOP 10</h1>
+                        <p>Di halaman ini, Anda dapat melihat karakter yang berinteraksi paling banyak di
+                            tiap bukunya dalam bentuk grafik batang. Scroll ke bawah untuk melihat.</p>
+                    </div>
+                </div>
+            </div>
+
+            <article id="article-top10">
+                <h1>10 KARAKTER DENGAN INTERAKSI TERBANYAK PADA BUKU <span id="span-booknum"></span></h1>
+                <div class="container-article-body">
+                    <div class="container-filter">
+                        <label for="select-book">Ganti buku: </label>
+                        <select name="book" id="select-book">
+                            <option value="1">Buku 1</option>
+                            <option value="2">Buku 2</option>
+                            <option value="3">Buku 3</option>
+                            <option value="4">Buku 4</option>
+                            <option value="5">Buku 5</option>
+                        </select>
+                        <button type="button" id="button-show">Tampilkan</button>
+                    </div>
+
+                    <div class="container-chart-top10">
+                        <canvas id="canvas-chart-top10" width="200"></canvas>
+                    </div>
+                </div>
+            </article>
+
+        </main>
+</body>
+
+</html>
