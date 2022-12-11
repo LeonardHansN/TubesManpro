@@ -5,54 +5,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="/index.js"> -->
-    <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="search.css">
 
     <title>Search</title>
 </head>
 
 <body>
-    <form action="/search/1">
-        <legend>Search by Name</legend>
-        <div class="select_book">
-            <label for="select-book">Buku: </label>
-            <select name="book" id="select-book">
-                <option value="1">Buku 1</option>
-                <option value="2">Buku 2</option>
-                <option value="3">Buku 3</option>
-                <option value="4">Buku 4</option>
-                <option value="5">Buku 5</option>
-            </select>
+    <header>
+        <div class="header-left">
+            <a href="/" id="container-logo"><img id="img-logo" src="../public/images/logo.png" alt=""></a>
         </div>
-        <input type="text" name="source" value="<%= source %> ">
-        <input type="submit" value="Cari">
-    </form>
-    <div class="show-table">
-        <%- include("./layout/pagination") %>
-            <!--Pagination belum dapat digunakan-->
-            <table class="styled-table">
-                <thead>
-                    <tr>
-                        <th>Source</th>
-                        <th>Target</th>
-                        <th>Weight</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% for(const row of results) { %>
-                        <tr>
-                            <td>
-                                <%= row.source %>
-                            </td>
-                            <td>
-                                <%= row.target %>
-                            </td>
-                            <td>
-                                <%= row.weight %>
-                            </td>
-                        </tr>
+        <div id="container-navbtn">
+            <a href="/top10char">TOP 10</a>
+            <a href="/search">SEARCH</a>
+            <a href="">GRAPH</a>
+        </div>
+    </header>
+    <div class="wrapper">
+        <form action="/search/1">
+            <legend>Search by Name</legend>
+            <div class="select_book">
+                <label for="select-book">Buku: </label>
+                <select name="book" id="select-book">
+                    <% for( const row of numBooks ) { %>
+                        <option value="<%= row.book %>" <%=(numBook==row.book)?"selected":"" %>>Book <%= row.book %>
+                        </option>
                         <% } %>
-                </tbody>
-            </table>
+                </select>
+            </div>
+            <input type="text" name="source" value="<%= source %>">
+            <input type="submit" value="Cari">
+        </form>
+        <div class="show-table">
+            <%- include("./layout/pagination") %>
+                <!--Pagination belum dapat digunakan-->
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Source</th>
+                            <th>Target</th>
+                            <th>Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(const row of results) { %>
+                            <tr>
+                                <td>
+                                    <%= row.source %>
+                                </td>
+                                <td>
+                                    <%= row.target %>
+                                </td>
+                                <td>
+                                    <%= row.weight %>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+        </div>
     </div>
 </body>
 
