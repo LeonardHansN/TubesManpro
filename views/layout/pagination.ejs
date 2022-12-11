@@ -1,6 +1,14 @@
-<% for(let i=1; i<=pageCount; i++) {
-    <a href="?start=<%=i%>"><%= i %> </a>
-<% } %>
+<div class="page">
+    <!-- btn sebelumnya -->
+    <% if (page>1) { %>
+        <a href="<%= url_page+sebelumnya+filter %> " class="page_link">Prev </a>
+        <% } %>
+
+            <% if (page<totalPage) { %>
+                <a href="<%= url_page+selanjutnya+filter %> " class="page_link">Next </a>
+                <% } %>
+</div>
+
 
 <br></br>
 
