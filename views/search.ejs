@@ -27,14 +27,13 @@
             <div class="select_book">
                 <label for="select-book">Buku: </label>
                 <select name="book" id="select-book">
-                    <option value="1">Buku 1</option>
-                    <option value="2">Buku 2</option>
-                    <option value="3">Buku 3</option>
-                    <option value="4">Buku 4</option>
-                    <option value="5">Buku 5</option>
+                    <% for( const row of numBooks ) { %>
+                        <option value="<%= row.book %>" <%=(numBook==row.book)?"selected":"" %>>Book <%= row.book %>
+                        </option>
+                        <% } %>
                 </select>
             </div>
-            <input type="text" name="source" value="<%= source %> ">
+            <input type="text" name="source" value="<%= source %>">
             <input type="submit" value="Cari">
         </form>
         <div class="show-table">

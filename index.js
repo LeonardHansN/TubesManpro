@@ -98,6 +98,7 @@ app.get('/search/:page', async (req, res) => {
         numBook = req.query.book;
         source = req.query.source;
     }
+    let numBooks = await db.getBookNum(conn);
     let results_all = await db.getSourceCall(conn, numBook, source);
     let totalPage = Math.ceil(results_all.length / showLimit);
     let results = await db.getSourceCall(conn, numBook, source, showLimit, page);
@@ -108,6 +109,6 @@ app.get('/search/:page', async (req, res) => {
     let filter = `?book=${numBook}&source=${source}`;
 
     // console.log(req.body);
-    let data = { source, numBook, results, totalPage, page, sebelumnya, selanjutnya, url_page, filter };
+    let data = { source, numBook, numBooks, results, totalPage, page, sebelumnya, selanjutnya, url_page, filter };
     res.render('search', data);
 })

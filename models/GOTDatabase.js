@@ -1,6 +1,6 @@
 import mysql from "mysql2";
-
-var pool;
+const table = "interactions"
+let pool;
 
 export default class GOTDatabase {
     constructor(poolOptions) {
@@ -15,6 +15,19 @@ export default class GOTDatabase {
                     reject(err);
                 } else {
                     resolve(conn);
+                }
+            });
+        });
+    };
+    getBookNum = async () => {
+        const conn = await this.connect();
+        const sqlquery = `SELECT DISTINCT(book) FROM ${table}`;
+        return new Promise((resolve, reject) => {
+            conn.query(sqlquery, (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
                 }
             });
         });
