@@ -52,7 +52,7 @@ app.listen(PORT, () => {
 // Router
 
 app.get('/', (req, res) => {
-    res.sendFile('MainMenu.html', { root: _root })
+    res.render('MainMenu', { root: _root })
 });
 
 
