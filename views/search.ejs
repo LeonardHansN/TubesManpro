@@ -13,7 +13,7 @@
 <body>
     <header>
         <div class="header-left">
-            <a href="/" id="container-logo"><img id="img-logo" src="../public/images/logo.png" alt="" ></a>
+            <a href="/" id="container-logo"><img id="img-logo" src="../public/images/logo.png" alt=""></a>
         </div>
         <div id="container-navbtn">
             <a href="/top10char">TOP 10</a>
@@ -22,51 +22,50 @@
         </div>
     </header>
     <div class="wrapper">
-    <form action="/search/1">
-        <legend>Search by Name</legend>
-        <div class="select_book">
-            <label for="select-book">Buku: </label>
-            <select name="book" id="select-book">
-                <option value="1">Buku 1</option>
-                <option value="2">Buku 2</option>
-                <option value="3">Buku 3</option>
-                <option value="4">Buku 4</option>
-                <option value="5">Buku 5</option>
-            </select>
+        <form action="/search/1">
+            <legend>Search by Name</legend>
+            <div class="select_book">
+                <label for="select-book">Buku: </label>
+                <select name="book" id="select-book">
+                    <option value="1">Buku 1</option>
+                    <option value="2">Buku 2</option>
+                    <option value="3">Buku 3</option>
+                    <option value="4">Buku 4</option>
+                    <option value="5">Buku 5</option>
+                </select>
+            </div>
+            <input type="text" name="source" value="<%= source %> ">
+            <input type="submit" value="Cari">
+        </form>
+        <div class="show-table">
+            <%- include("./layout/pagination") %>
+                <!--Pagination belum dapat digunakan-->
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Source</th>
+                            <th>Target</th>
+                            <th>Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(const row of results) { %>
+                            <tr>
+                                <td>
+                                    <%= row.source %>
+                                </td>
+                                <td>
+                                    <%= row.target %>
+                                </td>
+                                <td>
+                                    <%= row.weight %>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
         </div>
-        <input type="text" name="search" value="">
-        <input type="submit" value="Cari">
-    </form>
-    <div class="show-table">
-        <!-- <div class="page">
-            <%- include(./layout/pagination.ejs) %>
-        </div> -->
-        <table class="styled-table">
-            <thead>
-                <tr>
-                    <th>Source</th>
-                    <th>Target</th>
-                    <th>Weight</th>
-                </tr>
-            </thead>
-            <tbody>
-                 <% for(const row of results) { %>
-                    <tr>
-                        <td>
-                            <%= row.source %>
-                        </td>
-                        <td>
-                            <%= row.target %>
-                        </td>
-                        <td>
-                            <%= row.weight %>
-                        </td>
-                    </tr>
-                    <% } %> 
-            </tbody>
-        </table>
     </div>
-</div>
 </body>
 
 </html>

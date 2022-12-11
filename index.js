@@ -94,14 +94,20 @@ app.get('/search/:page', async (req, res) => {
 
     // res.render('search');
 
-    if (req.body.source !== undefined && req.body.book) {
-        numBook = req.body.book;
-        source = req.body.source;
+    if (req.query.source !== undefined && req.query.book) {
+        numBook = req.query.book;
+        source = req.query.source;
     }
     let results_all = await db.getSourceCall(conn, numBook, source);
-    let totalPage = results_all.length / showLimit;
+    let totalPage = Math.ceil(results_all.length / showLimit);
     let results = await db.getSourceCall(conn, numBook, source, showLimit, page);
-    console.log(req.body);
-    let data = { source, numBook, results, totalPage };
+    conn.release();
+    let sebelumnya = parseInt(page) - 1;
+    let selanjutnya = parseInt(page) + 1;
+    let url_page = "/search/";
+    let filter = `?book=${numBook}&source=${source}`;
+
+    // console.log(req.body);
+    let data = { source, numBook, results, totalPage, page, sebelumnya, selanjutnya, url_page, filter };
     res.render('search', data);
 })
