@@ -1,14 +1,111 @@
-.select_book {
-    display: inline-block;
-    width: 50vw;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    height: 65px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background-color: rgb(39, 39, 39);
+}
+
+body {
+    background-color: rgb(202, 202, 202);
+}
+
+#img-logo {
+    width: fit-content;
+    margin-top: 5px;
+    height: 55px;
+}
+
+.header-left {
+    float: left;
+}
+
+#container-navbtn {
+    float: right;
+    margin-right: 0;
+}
+
+#container-navbtn a {
+    line-height: 65px;
+  padding: 0 25px;
+  color: white;
+  display: block;
+  float: left;
+  transition: all 0.5s;
+}
+
+.wrapper {
+    padding: 100px;
+
+}
+
+legend {
+    font-size: 32pt;
+    border: 1px solid rgb(21, 21, 21);
+    background-color: rgb(21, 21, 21);
+    color: rgb(217, 217, 217);
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+#select-book {
+    margin-bottom: 20px;
+    font-size: 14pt;
+    width: 100px;
+}
+
+input {
+    margin-bottom: 20px;
+    font-size: 14pt;
+    height: 30px;
+}
+
+input[type="submit"] {
+    width: 80px;
+    padding: 3px;
+
+}
+
+.page {
+    margin-bottom: 10px;
+    font-size: 14pt;
 }
 
 .styled-table {
     width: 100%;
     border-collapse: collapse;
+    font-size: 12pt;
 }
 
-.styled-table td,
-.styled-table th {
-    border: 1px solid black;
+thead {
+    background-color: rgb(21, 21, 21);
+    color: white;
+}
+
+.styled-table thead th,
+.styled-table tbody td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.styled-table tbody tr {
+    background-color: white;
 }

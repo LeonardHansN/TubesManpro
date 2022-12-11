@@ -5,12 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="/index.js"> -->
-    <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="search.css">
 
     <title>Search</title>
 </head>
 
 <body>
+    <header>
+        <div class="header-left">
+            <a href="/" id="container-logo"><img id="img-logo" src="../public/images/logo.png" alt="" ></a>
+        </div>
+        <div id="container-navbtn">
+            <a href="/top10char">TOP 10</a>
+            <a href="/search">SEARCH</a>
+            <a href="">GRAPH</a>
+        </div>
+    </header>
+    <div class="wrapper">
     <form action="/search/1">
         <legend>Search by Name</legend>
         <div class="select_book">
@@ -23,11 +34,13 @@
                 <option value="5">Buku 5</option>
             </select>
         </div>
-        <input type="text" name="search" value="<%= source %> ">
+        <input type="text" name="search" value="">
         <input type="submit" value="Cari">
     </form>
     <div class="show-table">
-        <!--Pagination belum dapat digunakan-->
+        <!-- <div class="page">
+            <%- include(./layout/pagination.ejs) %>
+        </div> -->
         <table class="styled-table">
             <thead>
                 <tr>
@@ -37,7 +50,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(const row of results) { %>
+                 <% for(const row of results) { %>
                     <tr>
                         <td>
                             <%= row.source %>
@@ -49,10 +62,11 @@
                             <%= row.weight %>
                         </td>
                     </tr>
-                    <% } %>
+                    <% } %> 
             </tbody>
         </table>
     </div>
+</div>
 </body>
 
 </html>
