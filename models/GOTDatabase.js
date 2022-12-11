@@ -21,16 +21,18 @@ export default class GOTDatabase {
     };
 
     getSourceCall = (conn, bookNum, src, showLimit = 0, page = 0) => {
-        const sqlquery = `
-        SELECT target,COUNT(target) AS 'count' FROM interactions
+        let sqlquery = `
+        SELECT * FROM interactions
         WHERE book =?
         AND source like ?
-        GROUP by target
-        ORDER BY count desc;
+        ORDER BY weight desc
         `
         let data_query = [bookNum, `%${src}%`]
         if (showLimit > 0 && page > 0) {
-
+            sqlquery += ` LIMIT ?, ?`;
+            let startPage = (page - 1) * showLimit;
+            data_query.push(startPage)
+            data_query.push(showLimit)
         }
         return new Promise((resolve, reject) => {
             conn.query(sqlquery, data_query, (err, result) => {
