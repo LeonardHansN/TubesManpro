@@ -6,9 +6,9 @@ CREATE DATABASE IF NOT EXISTS `got`;
 -- Table structure for table `interactions`
 --
 
-drop table if exists `interactions`;
+drop table if exists got.interactions;
 
-CREATE TABLE `interactions` (
+CREATE TABLE got.interactions (
   `source` varchar(255) NOT NULL,
   `target` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE `interactions` (
 -- Dumping data for table `interactions`
 --
 
-INSERT INTO `interactions` (`source`, `target`, `type`, `weight`, `book`) VALUES
+INSERT INTO got.interactions (`source`, `target`, `type`, `weight`, `book`) VALUES
 ('Addam-Marbrand', 'Jaime-Lannister', 'Undirected', 3, 1),
 ('Addam-Marbrand', 'Tywin-Lannister', 'Undirected', 6, 1),
 ('Aegon-I-Targaryen', 'Daenerys-Targaryen', 'Undirected', 5, 1),
@@ -985,7 +985,8 @@ INSERT INTO `interactions` (`source`, `target`, `type`, `weight`, `book`) VALUES
 ('Cersei-Lannister', 'Tanda-Stokeworth', 'Undirected', 3, 2),
 ('Cersei-Lannister', 'Tickler', 'Undirected', 5, 2),
 ('Cersei-Lannister', 'Tommen-Baratheon', 'Undirected', 10, 2);
-INSERT INTO `interactions` (`source`, `target`, `type`, `weight`, `book`) VALUES
+
+INSERT INTO got.interactions (`source`, `target`, `type`, `weight`, `book`) VALUES
 ('Cersei-Lannister', 'Tyrion-Lannister', 'Undirected', 87, 2),
 ('Cersei-Lannister', 'Tywin-Lannister', 'Undirected', 10, 2),
 ('Cersei-Lannister', 'Varys', 'Undirected', 23, 2),
@@ -1942,7 +1943,8 @@ INSERT INTO `interactions` (`source`, `target`, `type`, `weight`, `book`) VALUES
 ('Edmure-Tully', 'Elmar-Frey', 'Undirected', 3, 3),
 ('Edmure-Tully', 'Hoster-Tully', 'Undirected', 11, 3),
 ('Edmure-Tully', 'Jaime-Lannister', 'Undirected', 4, 3);
-INSERT INTO `interactions` (`source`, `target`, `type`, `weight`, `book`) VALUES
+
+INSERT INTO got.interactions (`source`, `target`, `type`, `weight`, `book`) VALUES
 ('Edmure-Tully', 'Lothar-Frey', 'Undirected', 4, 3),
 ('Edmure-Tully', 'Marq-Piper', 'Undirected', 5, 3),
 ('Edmure-Tully', 'Robb-Stark', 'Undirected', 34, 3),
@@ -2901,7 +2903,8 @@ INSERT INTO `interactions` (`source`, `target`, `type`, `weight`, `book`) VALUES
 ('High-Sparrow', 'Margaery-Tyrell', 'undirected', 11, 4),
 ('High-Sparrow', 'Osney-Kettleblack', 'undirected', 4, 4),
 ('High-Sparrow', 'Taena-of-Myr', 'undirected', 4, 4);
-INSERT INTO `interactions` (`source`, `target`, `type`, `weight`, `book`) VALUES
+
+INSERT INTO got.interactions (`source`, `target`, `type`, `weight`, `book`) VALUES
 ('High-Sparrow', 'Tommen-Baratheon', 'undirected', 7, 4),
 ('Horton-Redfort', 'Yohn-Royce', 'undirected', 3, 4),
 ('Hotho-Harlaw', 'Rodrik-Harlaw', 'undirected', 4, 4),
@@ -3851,7 +3854,8 @@ INSERT INTO `interactions` (`source`, `target`, `type`, `weight`, `book`) VALUES
 ('Rhaegar-Frey', 'Wyman-Manderly', 'undirected', 3, 5),
 ('Rhaegar-Targaryen', 'Robert-Baratheon', 'undirected', 7, 5),
 ('Richard-Horpe', 'Stannis-Baratheon', 'undirected', 3, 5);
-INSERT INTO `interactions` (`source`, `target`, `type`, `weight`, `book`) VALUES
+
+INSERT INTO got.interactions (`source`, `target`, `type`, `weight`, `book`) VALUES
 ('Rickon-Stark', 'Robb-Stark', 'undirected', 3, 5),
 ('Rickon-Stark', 'Theon-Greyjoy', 'undirected', 4, 5),
 ('Robb-Stark', 'Rodrik-Cassel', 'undirected', 3, 5),
