@@ -19,9 +19,9 @@ export default class GOTDatabase {
             });
         });
     };
-    getBookNum = async () => {
-        const conn = await this.connect();
+    getBookNum = async (conn) => {
         const sqlquery = `SELECT DISTINCT(book) FROM ${table}`;
+
         return new Promise((resolve, reject) => {
             conn.query(sqlquery, (err, result) => {
                 if (err) {
@@ -31,6 +31,7 @@ export default class GOTDatabase {
                 }
             });
         });
+        
     };
 
     getSourceCall = (conn, bookNum, src, showLimit = 0, page = 0) => {
