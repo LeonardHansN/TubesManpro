@@ -6,22 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="/index.js"> -->
     <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/navigationheader.css">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
     <title>Search</title>
 </head>
 
 <body>
     
-    <header>
-        <div class="header-left">
-            <a href="/" id="container-logo"><img id="img-logo" src="../public/images/logo.png" alt=""></a>
-        </div>
-        <div id="container-navbtn">
-            <a href="/top10char">TOP 10</a>
-            <a href="/search">SEARCH</a>
-            <a href="">GRAPH</a>
-        </div>
-    </header>
+    <%- include('./navigationheader.ejs') %>
     <div class="wrapper">
         <form action="/search/1">
             <legend>Search by Name</legend>
