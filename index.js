@@ -47,7 +47,23 @@ app.listen(PORT, () => {
     console.log(`Server listening at port ${PORT}`);
 });
 // ============================================================================
+// Method untuk mencari duplikat dalam array of objects.
+var containsDuplicate = (arr) => {
+    let mapRes = mapItems(arr);
+    return mapRes.some(function(item, idx){ 
+        return mapRes.indexOf(item) != idx 
+    });
+}
 
+var mapItems = (arr) => {
+    return arr.map((item) => {
+        return item.name
+    });
+}
+
+var indexOfIdInArray = (arr, id) => {
+    return arr.findIndex(item => item.id === id);
+}
 // ============================================================================
 // Router
 
@@ -80,6 +96,51 @@ app.get('/top10char', async (req, res) => {
     } else {
         // res.sendFile('top10char.html', { root: _root })
         res.render('top10char');
+    }
+});
+
+app.get('/graph', async (req, res) => {
+    const bookNum = req.query.bookNum;
+    if (!isNaN(req.query.bookNum)) {
+        const conn = await db.connect();
+        let result = await db.getTop10Weight(conn, bookNum);
+        conn.release();
+
+        const edges = [];
+        const nodes = [];
+
+        for (let i = 0; i < result.length; i++) {
+            const sourceName = result[i].source;
+            const targetName = result[i].target;
+
+            if (indexOfIdInArray(nodes, sourceName) < 0){
+                const newNode = {id:sourceName, label:sourceName};
+                nodes.push(newNode);
+            }
+
+            if (indexOfIdInArray(nodes, targetName) < 0){
+                const newNode = {id:targetName, label:targetName};
+                nodes.push(newNode);
+            }
+
+            const newEdge = { 
+                from: sourceName, 
+                to: targetName, 
+                label: ''+result[i].weight, 
+                font: { align: "horizontal" } 
+            };
+
+            edges.push(newEdge);
+        };
+
+        const data = {
+            nodes: nodes,
+            edges: edges
+        };
+
+        res.json(data);
+    } else {
+        res.render('graph');
     }
 });
 

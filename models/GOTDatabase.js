@@ -31,7 +31,7 @@ export default class GOTDatabase {
                 }
             });
         });
-        
+
     };
 
     getSourceCall = (conn, bookNum, src, showLimit = 0, page = 0) => {
@@ -79,4 +79,22 @@ export default class GOTDatabase {
             });
         });
     };
+
+    getTop10Weight = (conn, bookNum) => {
+        const sqlquery = `
+        SELECT source, target, weight 
+        FROM interactions 
+        WHERE book = ?
+        ORDER BY weight DESC
+        LIMIT 10`;
+        return new Promise((resolve, reject) => {
+            conn.query(sqlquery, [bookNum], (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+    }
 }
