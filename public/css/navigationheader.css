@@ -24,6 +24,7 @@
 #container-navbtn{
     width: 23%;
     padding-right: 2.5%;
+    box-sizing: content-box;
     
     display: flex;
     justify-content: space-between;

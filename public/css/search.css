@@ -5,12 +5,7 @@
     font-family: sans-serif;
 }
 
-a {
-    text-decoration: none;
-}
-
 header {
-    height: 65px;
     width: 100%;
     position: fixed;
     top: 0;
@@ -22,27 +17,11 @@ body {
     background-color: rgb(202, 202, 202);
 }
 
-#img-logo {
-    width: fit-content;
-    margin-top: 5px;
-    height: 55px;
-}
-
 .header-left {
     float: left;
 }
 
-#container-navbtn {
-    float: right;
-    margin-right: 0;
-}
-
 #container-navbtn a {
-    line-height: 65px;
-  padding: 0 25px;
-  color: white;
-  display: block;
-  float: left;
   transition: all 0.5s;
 }
 
