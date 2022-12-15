@@ -19,6 +19,7 @@ export default class GOTDatabase {
             });
         });
     };
+    // Method-method untuk mengambil data dari database
     getBookNum = async (conn) => {
         const sqlquery = `SELECT DISTINCT(book) FROM ${table}`;
 
@@ -31,7 +32,7 @@ export default class GOTDatabase {
                 }
             });
         });
-        
+
     };
 
     getSourceCall = (conn, bookNum, src, showLimit = 0, page = 0) => {
@@ -58,7 +59,6 @@ export default class GOTDatabase {
             });
         });
     }
-    // Method-method untuk mengambil data dari database
     getTop10Interactions = (conn, bookNum) => {
         const sqlquery = `
             SELECT 

@@ -112,3 +112,26 @@ app.get('/search/:page', async (req, res) => {
     let data = { source, numBook, numBooks, results, totalPage, page, sebelumnya, selanjutnya, url_page, filter };
     res.render('search', data);
 })
+app.get('/api/graph', async (req, res) => {
+    const numBook = req.query.bookNum;
+    const conn = await db.connect();
+    let results = [];
+    if (!isNaN(numBook)) {
+        results = await db.getSourceCall(conn, numBook, "", showLimit, 1);
+
+        console.log(results);
+    }
+    conn.release();
+    res.json(results);
+})
+app.get('/graph', async (req, res) => {
+    const conn = await db.connect();
+    let numBook = 1;
+    if (req.query.book) {
+        numBook = req.query.book;
+    }
+    let numBooks = await db.getBookNum(conn);
+    conn.release();
+    let data = { numBooks, numBook };
+    res.render('graph', data);
+})
