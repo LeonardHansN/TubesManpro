@@ -9,6 +9,10 @@ a {
     text-decoration: none;
 }
 
+body {
+    background-color: black;
+}
+
 header {
     height: 65px;
     width: 100%;
@@ -29,32 +33,77 @@ header {
 }
 
 .wrapper {
-    padding: 180px 0 100px 0;
-    background-image: url(../images/Untitled\ design.png);
+    margin-top: 15vh;
+    padding: 180px 80px 10px 80px;
+    height: 500px;
+    background-image: url(../images/home-bg.jpg);
     background-size: cover;
-    text-align: center;
-    height: 1024px;
-    
+    color: white;
+    text-align: start;
 }
 
-.btn-wrapper {
-    
-    display: flexbox;
-    justify-content: center;
-    gap: 30px;
+.text-container {
     margin-top: 200px;
 }
 
-.btn {
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 12px 24px;
-    background-color: #55acee;
-    display: inline-block;
-    border-radius: 4px;
-    text-align: center;
-    color: black;
+.wrapper h3 {
     font-size: 32pt;
+    font-weight: bold;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+}
+
+.wrapper p {
+    font-size: 12pt;
+
+}
+
+.desc-wrapper {
+    padding: 50px 80px 10px 80px;
+    display: grid;
+    grid-template-areas: "desc char dragon";
+    grid-template-columns: 50% 25% 25%;
+    gap: 25px;
     color: white;
 }
 
+.desc-icon {
+    text-align: justify;
+    grid-area: desc;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+}
+
+.char-icon {
+    grid-area: char;
+    background-image: url(../images/char.png);
+    background-size: cover;
+    border-radius: 25px;
+    height: 200px;
+}
+
+.balerion-icon {
+    grid-area: dragon;
+    background-image: url(../images/balerion.png);
+    border-radius: 25px;
+    background-size: cover;
+    height: 200px;
+}
+
+.char-icon p {
+    margin-top: 144px;
+    padding: 20px;
+    background-color: black;
+    opacity: 75%;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.balerion-icon p {
+    margin-top: 144px;
+    padding: 20px;
+    background-color: black;
+    opacity: 75%;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
