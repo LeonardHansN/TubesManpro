@@ -13,7 +13,7 @@ const chartConfig = {
             }
         ]
     },
-    options: {
+    options: { 
         indexAxis: 'y',
         scales: {
             x: {

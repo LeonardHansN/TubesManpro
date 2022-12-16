@@ -5,21 +5,31 @@ const spanBookNum = document.getElementById('span-booknum');
 
 var graph;
 var options = {
-    // "physics": {
-    //     "barnesHut": {
-    //         "springConstant": 0,
-    //         "avoidOverlap": 0.2,
-    //         'gravitationalConstant': 0
-    //     }
-    // }
-    // configure: {
-    //     enabled: true,
-    //     filter: 'physics, layout',
-    //     showButton: true
-    //   }
+    layout: {
+        hierarchical: {
+            enabled: true,
+        },
+    },
+    configure: {
+        enabled: false,
+        filter: 'physics, layout',
+        showButton: true
+    },
+    physics: {
+        enabled: true,
+        hierarchicalRepulsion:{
+            centralGravity: 1.2,
+            avoidOverlap: 1,
+        }
+    },
+    nodes:{
+        font:{
+            color: '#000000',
+            size: 18
+        }
+    }
 };
 
-// Funcs
 const getGraphData = async (bookNum) => {
     const promise = await fetch("/graph?" + "bookNum=" + bookNum);
     const data = await promise.json();
@@ -31,6 +41,8 @@ const getGraphData = async (bookNum) => {
 
 const makeNetwork = async (bookNum) => {
     const data = await getGraphData(bookNum);
+    
+    spanBookNum.innerText=bookNum;
     graph = new vis.Network(containerGraph, data, options);
 }
 
@@ -40,6 +52,6 @@ buttonShow.addEventListener("click", () => {
 });
 
 (() => {
-
+    makeNetwork(1)
 })();
 
