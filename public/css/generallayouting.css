@@ -1,0 +1,110 @@
+a,p,label,option,button{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+i{
+    color: #FFCC00;
+}
+
+p{
+    margin-bottom: 0;
+}
+
+body {
+    margin: 0;
+    background-color: #ccc;
+}
+
+main {
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+}
+
+#container-overview {
+    background-color: #ccc;
+    width: 100%;
+    
+    margin-top: 15vh;
+    padding: 4vh;
+    box-sizing: border-box;
+    
+}
+
+#subcontainer-overview{
+    display: grid;
+    grid-template-columns: auto auto;
+    box-shadow: 0vw 0.1vw 4px 0.2vh #b3b3b3;
+}
+
+#img-overview {
+    width: 62vw;
+}
+
+#container-expl{
+    background-color: #2D7C9D;
+    padding: 0 7%;
+    display: flex;
+    flex-direction: column;
+}
+
+#container-expl h1{
+    margin-bottom: 0%;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    font-size: 3em;
+    color: #ccc;
+}
+
+#container-expl p{
+    font-size: 1.3em;
+    color: white;
+}
+
+article {
+    box-shadow: 0.2vw -0.2vw 4px 0 #b3b3b3;
+    box-sizing: border-box;
+    background-color: white;
+    width: 100%;
+    padding: 6vh;
+}
+
+article>h1 {
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+    font-family: 'Montserrat';
+    font-weight: bolder;
+}
+
+.container-article-body{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.container-filter{
+    display: flex;
+    justify-content: center;
+    font-size: 1.3em;
+}
+
+
+option{
+    font-size: 1em;
+}
+
+select{
+    font-size: 0.9em;
+}
+
+button{
+    font-size: 0.9em;
+}
+
+.container-filter button{
+    margin-left: 1%;
+}
+
+.container-filter select{
+    margin-left: 1%;
+}

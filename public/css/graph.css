@@ -1,0 +1,13 @@
+#container-graph{
+    height: 70vh;
+    width: 100%
+}
+
+#container-expl{
+    background-color: #36498f;
+}
+
+.container-article-body p{
+    text-align: center;
+    padding-bottom: 3vh;
+}
