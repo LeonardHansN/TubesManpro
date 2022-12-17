@@ -7,6 +7,10 @@
     <!-- <link rel="stylesheet" href="/index.js"> -->
     <link rel="stylesheet" href="/css/search.css">
     <link rel="stylesheet" href="/css/navigationheader.css">
+    <link rel="stylesheet" href="/css/generallayouting.css">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
@@ -17,6 +21,17 @@
     
     <%- include('./navigationheader.ejs') %>
     <div class="wrapper">
+        <div id="container-overview">
+            <div id="subcontainer-overview">
+                <img src="/images/interaction.jpg" alt="" id="img-overview">
+                <div id="container-expl">
+                    <h1>SEARCH</h1>
+                    <p>Di halaman ini, Anda dapat melakukan pencarian nama karakter dan mendapatkan karakter-karakter yang dihubunginya beserta jumlahnya.</p>
+                    <p><i class="fa fa-angle-double-down" aria-hidden="true"></i> Scroll ke bawah untuk melihat.</p>
+                </div>
+            </div>
+        </div>
+        <h1 id="page-title">PENCARIAN KARAKTER PADA BUKU <span id="span-booknum"></span></h1>
         <form action="/search/1">
             <div class="select_book">
                 <label for="select-book">Buku: </label>
@@ -50,7 +65,7 @@
                                 <td>
                                     <%= row.target %>
                                 </td>
-                                <td>
+                                <td id="weight">
                                     <%= row.weight %>
                                 </td>
                             </tr>

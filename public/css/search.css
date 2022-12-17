@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
 }
 
 header {
@@ -26,9 +25,19 @@ body {
 }
 
 .wrapper {
-    padding: 30px 100px 100px 100px;
+
     margin-top: 15vh;
 
+}
+
+.container-exp1 h1 {
+    margin-top: 10px;
+    font-family: sans-serif;
+}
+
+.container-exp1 p {
+    margin-top: 10px;
+    font-family: sans-serif;
 }
 
 legend {
@@ -41,9 +50,27 @@ legend {
     margin-bottom: 20px;
 }
 
+#page-title {
+    width: 100%;
+    font-weight: bolder;
+    font-size: 1.5em;
+    text-align: center;
+    font-family: 'Montserrat';
+}
+
+.show-table {
+    font-family: 'Montserrat';
+    font-weight: bolder;
+    padding: 0 6vh 6vh 6vh;
+}
+
 label {
     font-size: 20px;
     margin-right: 20px;
+}
+
+form {
+    margin: 6vh 6vh 0 6vh;
 }
 
 #select-book {
@@ -73,19 +100,40 @@ input[type="submit"] {
     width: 100%;
     border-collapse: collapse;
     font-size: 12pt;
+    border-radius: 10px;
+    box-shadow: 20px;
 }
 
 thead {
     background-color: rgb(21, 21, 21);
     color: white;
+    height: 50px;
+    padding: 10px;
 }
 
-.styled-table thead th,
+tbody {
+    padding: 10px;
+}
+
 .styled-table tbody td {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 30px 10px;
+}
+
+.styled-table tbody tr {
+    border: solid 1px rgb(108, 108, 108);
+    border-radius: 10px;
+}
+
+.styled-table thead th {
+    padding: 30px;
+    border-collapse: separate;
+    font-size: 16pt;
 }
 
 .styled-table tbody tr {
     background-color: white;
+}
+
+#weight {
+    text-align: center;
 }
